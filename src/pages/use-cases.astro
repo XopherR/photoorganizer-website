@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { useCases } from '../content/siteContent';
+---
+
+<Layout
+  title="SnapAtlas Use Cases | DataHoarders, Families, and Photographers"
+  description="See how SnapAtlas supports different photo-management workflows across large personal and professional archives."
+>
+  <section class="container-custom pt-14 pb-10 md:pt-20">
+    <p class="section-kicker">Use cases</p>
+    <h1 class="text-4xl md:text-5xl font-bold mt-2">Built for people with too many photos and too little structure</h1>
+    <p class="mt-5 text-lg text-slate-700 max-w-3xl">
+      From 20 years of family memories to heavy hobbyist libraries, SnapAtlas helps you turn sprawling folders into
+      maintainable archives with clear chronology and less duplicate noise.
+    </p>
+  </section>
+
+  <section class="container-custom pb-16 grid md:grid-cols-3 gap-6">
+    {useCases.map((entry) => (
+      <article class="card h-full">
+        <h2 class="text-2xl font-bold">{entry.audience}</h2>
+        <p class="text-sm mt-4 uppercase tracking-[0.1em] font-semibold text-teal-700">Challenge</p>
+        <p class="mt-2 text-slate-700">{entry.challenge}</p>
+        <p class="text-sm mt-5 uppercase tracking-[0.1em] font-semibold text-teal-700">Outcome</p>
+        <p class="mt-2 text-slate-700">{entry.outcome}</p>
+        <ul class="mt-5 space-y-2 text-slate-700">
+          {entry.highlights.map((item) => (
+            <li class="flex items-start gap-2">
+              <span class="mt-1.5 h-2 w-2 rounded-full bg-amber-600"></span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </article>
+    ))}
+  </section>
+
+  <section class="container-custom pb-16">
+    <div class="spotlight">
+      <h2 class="text-3xl font-bold">The pattern is always the same: organize once, retrieve forever</h2>
+      <p class="mt-4 text-lg text-teal-50 max-w-3xl">
+        SnapAtlas is built around durable structure, so each new import is easier to process than the last.
+      </p>
+      <div class="mt-7">
+        <a href={`${import.meta.env.BASE_URL}download`} class="bg-white text-teal-800 px-6 py-3 rounded-xl font-semibold inline-block">Download SnapAtlas</a>
+      </div>
+    </div>
+  </section>
+</Layout>

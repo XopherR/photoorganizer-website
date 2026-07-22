@@ -1,0 +1,77 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&display=swap');
+
+/* Custom styles for SnapAtlas */
+@layer base {
+  :root {
+    --color-ink: #101418;
+    --color-paper: #f8f4ea;
+    --color-sand: #f0e7d5;
+    --color-brand: #0f766e;
+    --color-brand-strong: #115e59;
+    --color-accent: #dc6b2f;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--color-ink);
+    background:
+      radial-gradient(circle at 10% 15%, rgba(15, 118, 110, 0.18), transparent 45%),
+      radial-gradient(circle at 85% 0%, rgba(220, 107, 47, 0.16), transparent 40%),
+      linear-gradient(170deg, #f7f2e6 0%, #fcfbf8 45%, #fffdf8 100%);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: 'Source Serif 4', serif;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 rounded-xl font-semibold transition-all duration-200 shadow-md hover:shadow-lg;
+    color: #fff;
+    background: linear-gradient(135deg, var(--color-brand), var(--color-brand-strong));
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 rounded-xl font-semibold border transition-colors duration-200;
+    color: var(--color-ink);
+    border-color: rgba(16, 20, 24, 0.18);
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .card {
+    @apply rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-6;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(252, 250, 244, 0.96));
+    border: 1px solid rgba(16, 20, 24, 0.08);
+  }
+
+  .section-kicker {
+    @apply uppercase text-xs font-bold tracking-[0.14em];
+    color: var(--color-brand-strong);
+  }
+
+  .metric {
+    @apply rounded-xl p-4;
+    background: rgba(255, 255, 255, 0.74);
+    border: 1px solid rgba(16, 20, 24, 0.08);
+  }
+
+  .spotlight {
+    @apply rounded-3xl p-8 md:p-10;
+    background: linear-gradient(145deg, #123c3b 0%, #0f766e 55%, #1a8f85 100%);
+    color: #f7fbfa;
+  }
+}

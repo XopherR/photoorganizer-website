@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Placeholder - Before and After Comparison</title>
+  <desc id="desc">Replace with real before/after organization image for marketing.</desc>
+  <rect width="1280" height="720" fill="#0f172a"/>
+  <rect x="80" y="120" width="520" height="480" rx="16" fill="#7f1d1d"/>
+  <rect x="680" y="120" width="520" height="480" rx="16" fill="#0f766e"/>
+  <text x="340" y="190" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="42" fill="#ffffff">Before</text>
+  <text x="940" y="190" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="42" fill="#ffffff">After</text>
+  <text x="640" y="660" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#cbd5e1">Replace: public/images/placeholders/before-after.svg</text>
+</svg>

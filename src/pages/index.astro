@@ -1,0 +1,142 @@
+﻿---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import { coreFeatures, heroStats, useCases } from '../content/siteContent';
+---
+
+<Layout
+  title="SnapAtlas | Photo Organization for Real-World Archives"
+  description="SnapAtlas helps you organize high-volume photo libraries with date-based folders, duplicate cleanup, and location intelligence."
+>
+  <section class="container-custom pt-14 pb-10 md:pt-20">
+    <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
+      <div>
+        <p class="section-kicker mb-4">SnapAtlas for Windows</p>
+        <h1 class="text-4xl md:text-6xl leading-tight font-bold text-slate-900">
+          Stop hunting through photo chaos.
+          <span class="text-teal-700">Start building an archive you can trust.</span>
+        </h1>
+        <p class="mt-6 text-lg md:text-xl text-slate-700 max-w-2xl">
+          SnapAtlas organizes growing photo libraries into clean date structures, removes duplicate clutter,
+          and turns location metadata into usable context for long-term storage and retrieval.
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+          <a href={`${import.meta.env.BASE_URL}download`} class="btn-primary text-center">Download SnapAtlas</a>
+          <a href={`${import.meta.env.BASE_URL}features`} class="btn-secondary text-center">Explore Features</a>
+        </div>
+      </div>
+
+      <div class="spotlight shadow-xl">
+        <p class="text-xs uppercase tracking-[0.14em] font-bold text-teal-100">Why teams choose SnapAtlas</p>
+        <ul class="mt-5 space-y-4">
+          <li class="flex items-start gap-3">
+            <Icon name="speed" class="w-5 h-5 text-amber-300 mt-0.5" />
+            <span>Built for massive collections across phones, cameras, and legacy drives.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <Icon name="duplicate" class="w-5 h-5 text-amber-300 mt-0.5" />
+            <span>Duplicate cleanup before backups keeps storage costs under control.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <Icon name="location" class="w-5 h-5 text-amber-300 mt-0.5" />
+            <span>Date and location context make old memories discoverable again.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-custom pb-8">
+    <div class="grid md:grid-cols-3 gap-4">
+      {heroStats.map((stat) => (
+        <article class="metric">
+          <p class="text-2xl font-bold text-slate-900">{stat.value}</p>
+          <p class="text-sm mt-1 text-slate-600">{stat.label}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="container-custom py-14">
+    <div class="flex items-end justify-between gap-6 flex-wrap mb-8">
+      <div>
+        <p class="section-kicker">Core capabilities</p>
+        <h2 class="text-3xl md:text-4xl font-bold mt-2">Everything needed to restore order</h2>
+      </div>
+      <a href={`${import.meta.env.BASE_URL}features`} class="btn-secondary">View Full Feature Breakdown</a>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      {coreFeatures.slice(0, 4).map((feature) => (
+        <article class="card">
+          <div class="flex items-center gap-3 mb-3">
+            <Icon name={feature.icon} class="w-6 h-6" />
+            <h3 class="text-2xl font-bold">{feature.title}</h3>
+          </div>
+          <p class="text-slate-700">{feature.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="container-custom py-14">
+    <div class="card p-8 md:p-10">
+      <p class="section-kicker">Built for distinct workflows</p>
+      <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-8">From family archives to DataHoarder vaults</h2>
+      <div class="grid md:grid-cols-3 gap-5">
+        {useCases.map((entry) => (
+          <article class="rounded-xl border border-black/10 bg-white/80 p-5">
+            <h3 class="text-xl font-bold">{entry.audience}</h3>
+            <p class="mt-3 text-sm text-slate-700">{entry.outcome}</p>
+          </article>
+        ))}
+      </div>
+      <div class="mt-8">
+        <a href={`${import.meta.env.BASE_URL}use-cases`} class="btn-primary">See Detailed Use Cases</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-custom pb-14">
+    <div class="flex items-end justify-between gap-6 flex-wrap mb-8">
+      <div>
+        <p class="section-kicker">Proof placeholders</p>
+        <h2 class="text-3xl md:text-4xl font-bold mt-2">Visual slots ready for real screenshots</h2>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <article class="card p-4">
+        <img
+          src={`${import.meta.env.BASE_URL}images/placeholders/before-after.svg`}
+          alt="Before and after organization placeholder"
+          class="w-full rounded-xl border border-black/10"
+          loading="lazy"
+        />
+        <p class="mt-3 text-sm text-slate-600">Replace with your strongest before/after organization result.</p>
+      </article>
+      <article class="card p-4">
+        <img
+          src={`${import.meta.env.BASE_URL}images/placeholders/location-rename.svg`}
+          alt="Location rename story placeholder"
+          class="w-full rounded-xl border border-black/10"
+          loading="lazy"
+        />
+        <p class="mt-3 text-sm text-slate-600">Replace with your GPS-to-place-name transformation visual.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="container-custom pb-16">
+    <div class="spotlight">
+      <h2 class="text-3xl md:text-4xl font-bold">Ready to turn your photo backlog into a searchable archive?</h2>
+      <p class="mt-4 text-lg text-teal-50 max-w-2xl">
+        SnapAtlas helps you process years of imports with less friction and more confidence.
+      </p>
+      <div class="mt-7 flex flex-col sm:flex-row gap-4">
+        <a href={`${import.meta.env.BASE_URL}download`} class="bg-white text-teal-800 px-6 py-3 rounded-xl font-semibold text-center">Get SnapAtlas</a>
+        <a href={`${import.meta.env.BASE_URL}support`} class="border border-teal-100/50 text-white px-6 py-3 rounded-xl font-semibold text-center">Documentation and Support</a>
+      </div>
+    </div>
+  </section>
+</Layout>

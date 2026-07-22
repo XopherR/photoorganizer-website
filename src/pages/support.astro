@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { faqs, supportLinks } from '../content/siteContent';
+---
+
+<Layout
+  title="SnapAtlas Support | Help, FAQs, and Contact"
+  description="Get support resources, FAQs, and contact options for SnapAtlas."
+>
+  <section class="container-custom pt-14 pb-10 md:pt-20">
+    <p class="section-kicker">Support</p>
+    <h1 class="text-4xl md:text-5xl font-bold mt-2">Documentation and support channels</h1>
+    <p class="mt-5 text-lg text-slate-700 max-w-3xl">
+      SnapAtlas is designed to be straightforward, but high-volume libraries can still raise edge-case questions.
+      Use the resources below for troubleshooting and product feedback.
+    </p>
+  </section>
+
+  <section class="container-custom pb-12 grid md:grid-cols-3 gap-6">
+    {supportLinks.map((item) => (
+      <article class="card">
+        <h2 class="text-xl font-bold">{item.label}</h2>
+        <p class="mt-3 text-slate-700">{item.description}</p>
+        <a href={item.href} class="mt-5 inline-block text-teal-800 font-semibold hover:text-teal-900" target={item.href.startsWith('http') ? '_blank' : undefined}>
+          Open Resource
+        </a>
+      </article>
+    ))}
+  </section>
+
+  <section class="container-custom pb-16">
+    <div class="card p-8 md:p-10">
+      <h2 class="text-3xl font-bold">Frequently asked questions</h2>
+      <div class="mt-7 grid gap-4">
+        {faqs.map((faq) => (
+          <details class="rounded-xl border border-black/10 bg-white/80 p-4">
+            <summary class="font-semibold cursor-pointer">{faq.question}</summary>
+            <p class="mt-3 text-slate-700">{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

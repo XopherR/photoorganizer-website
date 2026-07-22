@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { placeholderLinks } from '../content/siteContent';
+---
+
+<Layout
+  title="Download SnapAtlas | Windows Photo Organizer"
+  description="Download SnapAtlas for Windows and start organizing your photo archive by date, location, and duplicate state."
+>
+  <section class="container-custom pt-14 pb-16 md:pt-20">
+    <div class="spotlight">
+      <p class="text-xs uppercase tracking-[0.14em] font-bold text-teal-100">Download</p>
+      <h1 class="text-4xl md:text-5xl font-bold mt-3">Get SnapAtlas for Windows</h1>
+      <p class="mt-5 text-lg text-teal-50 max-w-3xl">
+        SnapAtlas is built for practical, metadata-first organization of large photo libraries.
+        Install it on Windows to sort by date, remove duplicate clutter, and improve retrieval.
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-4">
+        <a
+          href={placeholderLinks.microsoftStore}
+          target="_blank"
+          class="bg-white text-teal-800 px-6 py-3 rounded-xl font-semibold text-center"
+        >
+          Open Microsoft Store
+        </a>
+        <a
+          href="https://github.com/XopherX/PhotoOrganizer"
+          target="_blank"
+          class="border border-teal-100/50 text-white px-6 py-3 rounded-xl font-semibold text-center"
+        >
+          View Project Repository
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-custom pb-16 grid md:grid-cols-3 gap-6">
+    <article class="card">
+      <h2 class="text-2xl font-bold">System requirements</h2>
+      <ul class="mt-4 space-y-2 text-slate-700">
+        <li>Windows desktop environment</li>
+        <li>Photo libraries on local or attached storage</li>
+        <li>Sufficient disk space for organized output folders</li>
+      </ul>
+    </article>
+    <article class="card">
+      <h2 class="text-2xl font-bold">Recommended first run</h2>
+      <ul class="mt-4 space-y-2 text-slate-700">
+        <li>Start with one representative folder segment</li>
+        <li>Review date-based output structure choices</li>
+        <li>Run duplicate detection before long-term backup</li>
+      </ul>
+    </article>
+    <article class="card">
+      <h2 class="text-2xl font-bold">Need help?</h2>
+      <p class="mt-4 text-slate-700">
+        Visit support resources and FAQs if you need help with setup or large-library workflows.
+      </p>
+      <a href={`${import.meta.env.BASE_URL}support`} class="mt-5 inline-block text-teal-800 font-semibold">Open Support</a>
+    </article>
+  </section>
+</Layout>
