@@ -6,6 +6,19 @@ interface Props {
 
 const { title, description = "Organize thousands of photos by date, find duplicates, and manage locations with SnapAtlas." } = Astro.props;
 const base = import.meta.env.BASE_URL;
+const currentPath = Astro.url.pathname;
+const navLinks = [
+	{ label: 'Home', href: base },
+	{ label: 'Features', href: `${base}features` },
+	{ label: 'Use Cases', href: `${base}use-cases` },
+	{ label: 'Support', href: `${base}support` }
+];
+
+const isActive = (href: string) => {
+	const normalizedHref = href.endsWith('/') ? href : `${href}/`;
+	const normalizedPath = currentPath.endsWith('/') ? currentPath : `${currentPath}/`;
+	return normalizedPath === normalizedHref;
+};
 ---
 
 <!doctype html>
@@ -27,30 +40,35 @@ const base = import.meta.env.BASE_URL;
 	<title>{title}</title>
 	<link href={`${base}styles/global.css`} rel="stylesheet" />
   </head>
-  <body class="min-h-screen flex flex-col bg-gray-50">
-	<header class="bg-white/85 shadow-sm sticky top-0 z-50 backdrop-blur-md border-b border-black/5">
+  <body class="min-h-screen flex flex-col">
+	<header class="surface-panel sticky top-0 z-50 backdrop-blur-md border-b border-blue-200/50">
 	  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="flex justify-between items-center h-16">
+		<div class="flex justify-between items-center h-16 fade-in-up">
 		  <div class="flex items-center">
 			<a href={base} class="flex items-center space-x-3">
-			  <svg class="w-8 h-8 text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+			  <svg class="w-8 h-8 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
 			  </svg>
-			  <span class="text-xl font-bold text-gray-900">SnapAtlas</span>
+			  <span class="text-xl font-bold text-slate-900">SnapAtlas</span>
 			</a>
 		  </div>
 
-		  <div class="hidden md:flex items-center space-x-8">
-			<a href={base} class="text-gray-700 hover:text-teal-700 font-medium">Home</a>
-			<a href={`${base}features`} class="text-gray-700 hover:text-teal-700 font-medium">Features</a>
-			<a href={`${base}use-cases`} class="text-gray-700 hover:text-teal-700 font-medium">Use Cases</a>
-			<a href={`${base}support`} class="text-gray-700 hover:text-teal-700 font-medium">Support</a>
-			<a href={`${base}download`} class="btn-primary px-4 py-2 rounded-lg text-sm">Download</a>
+		  <div class="hidden md:flex items-center space-x-2">
+			{navLinks.map((link) => (
+			  <a
+				href={link.href}
+				class={`nav-link ${isActive(link.href) ? 'nav-link-active' : ''}`}
+				aria-current={isActive(link.href) ? 'page' : undefined}
+			  >
+				{link.label}
+			  </a>
+			))}
+			<a href={`${base}download`} class="btn-primary px-4 py-2 rounded-lg text-sm ml-2">Download</a>
 		  </div>
 
 		  <!-- Mobile menu button -->
 		  <div class="md:hidden">
-			<button type="button" aria-label="Toggle navigation menu" class="mobile-menu-button text-gray-700 hover:text-teal-700">
+			<button type="button" aria-label="Toggle navigation menu" class="mobile-menu-button text-slate-700 hover:text-blue-700 p-2 rounded-lg hover:bg-blue-100/70 transition-colors">
 			  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
 			  </svg>
@@ -59,12 +77,19 @@ const base = import.meta.env.BASE_URL;
 		</div>
 
 		<!-- Mobile menu -->
-		<div class="mobile-menu hidden md:hidden pb-4 space-y-2">
-		  <a href={base} class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Home</a>
-		  <a href={`${base}features`} class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Features</a>
-		  <a href={`${base}use-cases`} class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Use Cases</a>
-		  <a href={`${base}support`} class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Support</a>
-		  <a href={`${base}download`} class="block px-4 py-2 bg-teal-700 text-white rounded text-center hover:bg-teal-800">Download</a>
+		<div class="mobile-menu hidden md:hidden pb-4">
+		  <div class="surface-panel rounded-2xl p-3 space-y-1">
+			{navLinks.map((link) => (
+			  <a
+				href={link.href}
+				class={`block nav-link ${isActive(link.href) ? 'nav-link-active' : ''}`}
+				aria-current={isActive(link.href) ? 'page' : undefined}
+			  >
+				{link.label}
+			  </a>
+			))}
+			<a href={`${base}download`} class="block px-4 py-2 bg-blue-700 text-white rounded-lg text-center font-semibold hover:bg-blue-800 transition-colors">Download</a>
+		  </div>
 		</div>
 	  </nav>
 	</header>
@@ -116,8 +141,25 @@ const base = import.meta.env.BASE_URL;
 
 	<script>
 	  // Mobile menu toggle
-	  document.querySelector('.mobile-menu-button')?.addEventListener('click', () => {
-		document.querySelector('.mobile-menu')?.classList.toggle('hidden');
+	  const menuButton = document.querySelector('.mobile-menu-button');
+	  const mobileMenu = document.querySelector('.mobile-menu');
+
+	  menuButton?.addEventListener('click', () => {
+		mobileMenu?.classList.toggle('hidden');
+	  });
+
+	  document.addEventListener('click', (event) => {
+		const target = event.target;
+		if (!(target instanceof Node)) return;
+		if (!mobileMenu || !menuButton) return;
+		if (mobileMenu.classList.contains('hidden')) return;
+
+		const clickInsideMenu = mobileMenu.contains(target);
+		const clickMenuButton = menuButton.contains(target);
+
+		if (!clickInsideMenu && !clickMenuButton) {
+		  mobileMenu.classList.add('hidden');
+		}
 	  });
 	</script>
   </body>
