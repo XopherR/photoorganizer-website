@@ -5,19 +5,22 @@ import ContactUs from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 
 const metadata = {
-  title: 'Contact',
+  title: 'Support',
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- HeroText Widget ******************* -->
-
-  <HeroText tagline="Contact" title="Let's Connect!" />
+  <HeroText
+    tagline="Support"
+    title="Get unstuck while organizing your library"
+    subtitle="If a scan, duplicate pass, merge, or HEIC conversion is not behaving the way you expected, start here."
+    callToAction={{ text: 'Read troubleshooting', href: '/blog/troubleshooting-common-snapatlas-issues' }}
+  />
 
   <ContactUs
     id="form"
-    title="Drop us a message today!"
-    subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
+    title="Tell us what happened"
+    subtitle="Include which operation you ran, whether What-If mode was enabled, what you expected, and what happened instead."
     inputs={[
       {
         type: 'text',
@@ -29,50 +32,52 @@ const metadata = {
         name: 'email',
         label: 'Email',
       },
+      {
+        type: 'text',
+        name: 'operation',
+        label: 'Operation',
+      },
+      {
+        type: 'text',
+        name: 'scope',
+        label: 'Library scope',
+      },
     ]}
     textarea={{
-      label: 'Message',
+      label: 'Details',
     }}
     disclaimer={{
-      label:
-        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
+      label: 'Only share file names, screenshots, or metadata you are comfortable sending.',
     }}
-    description="Our support team typically responds within 24 business hours."
+    description="A strong report includes scan type, folder scope, duplicate mode, and whether the issue reproduces in a smaller folder."
   />
 
-  <!-- Features2 Widget ************** -->
-
   <Features2
-    title="We are here to help!"
+    title="Fastest places to look first"
     items={[
       {
-        title: 'General support',
-        description: `Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality.`,
+        title: 'Getting started',
+        description: 'Use the recommended order: scan, What-If mode, organize, review outliers, then handle duplicates.',
       },
       {
-        title: 'Contact sales',
-        description:
-          'Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.',
+        title: 'Troubleshooting',
+        description: 'Check guidance for missing metadata, slow operations, and duplicate thresholds.',
       },
       {
-        title: 'Technical support',
-        description:
-          'Chat with us when facing issues like template installation, problems editing difficulties, compatibility issues with software or download errors, or other technical challenges related to using the templates.',
+        title: 'FAQ',
+        description: 'Quick answers on local-only use, staged cleanup, and ExifTool requirements.',
       },
       {
-        title: 'Phone',
-        description: '+1 (234) 567-890',
-        icon: 'tabler:headset',
+        title: 'Safety and privacy',
+        description: 'Understand dry runs, staged cleanup, and why local workflows reduce exposure.',
       },
       {
-        title: 'Email',
-        description: 'contact@support.com',
-        icon: 'tabler:mail',
+        title: 'Duplicate cleanup guide',
+        description: 'Review exact matches first, then visual matches, then stage removals for verification.',
       },
       {
-        title: 'Location',
-        description: '1234 Lorem Ipsum St, 12345, Miami, EEUU',
-        icon: 'tabler:map-pin',
+        title: 'HEIC conversion guide',
+        description: 'Convert when compatibility matters, then verify JPG output and staged originals.',
       },
     ]}
   />

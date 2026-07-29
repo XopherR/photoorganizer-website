@@ -13,296 +13,266 @@ import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
+  title: 'SnapAtlas Photo Organizer',
   ignoreTitleTemplate: true,
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
-
   <Hero
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/arthelokyo/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
+        text: 'Explore features',
+        href: '/services',
       },
-      { text: 'Learn more', href: '#features' },
+      { text: 'Read getting started', href: '/blog/getting-started-with-snapatlas' },
     ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
+    image={{ src: '~/assets/images/hero-image.png', alt: 'SnapAtlas photo library workflow illustration' }}
   >
     <Fragment slot="title">
-      Free template for <span class="hidden xl:inline">creating websites with</span>
-      <span class="text-accent dark:text-white"> Astro v6</span> + Tailwind CSS
+      Organize messy photo libraries with <span class="text-accent dark:text-white">safe, local-first cleanup</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro v6 +
-        Tailwind CSS v4.</span
-      >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
-      Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages & Blogs.
+      SnapAtlas scans folders, reads metadata, finds duplicates, organizes by date and location, merges related folders,
+      and converts HEIC without forcing you into a risky all-at-once workflow.
     </Fragment>
   </Hero>
 
-  <!-- Note Widget ******************* -->
-
-  <Note title="Philosophy:" description="Simplicity, Best Practices and High Performance" />
-
-  <!-- Features Widget *************** -->
+  <Note title="Philosophy:" description="Local-first, review-first, and built for careful cleanup." />
 
   <Features
     id="features"
-    tagline="Features"
-    title="What you get with AstroWind"
-    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022, 2023, 2024 and 2025."
+    tagline="Core workflows"
+    title="Clean up large photo and video libraries without guesswork"
+    subtitle="SnapAtlas is designed for people who need structure, duplicate review, and safer file operations instead of another generic gallery app."
     items={[
       {
-        title: 'Astro + Tailwind CSS Integration',
-        description:
-          'A seamless integration between two great frameworks that offer high productivity, performance and versatility. Now powered by Tailwind CSS v4.',
-        icon: 'tabler:brand-tailwind',
+        title: 'Folder browsing and indexing',
+        description: 'Navigate your folder tree, view counts, and keep large library views current with background indexing.',
+        icon: 'tabler:folders',
       },
       {
-        title: 'Ready-to-use Components',
-        description:
-          'Widgets made with Tailwind CSS v4 ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
-        icon: 'tabler:components',
+        title: 'Metadata extraction',
+        description: 'Read EXIF metadata such as capture date, camera details, and location when files include it.',
+        icon: 'tabler:camera-search',
       },
       {
-        title: 'Best Practices',
-        description:
-          'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
-        icon: 'tabler:list-check',
+        title: 'Duplicate detection',
+        description: 'Review both exact duplicates and visual look-alikes, including edited copies that are not byte-for-byte identical.',
+        icon: 'tabler:copy-check',
       },
       {
-        title: 'Excellent Page Speed',
-        description:
-          'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
-        icon: 'tabler:rocket',
+        title: 'Date and location organization',
+        description: 'Group files into clearer date-based folders and use location metadata when available.',
+        icon: 'tabler:calendar-pin',
       },
       {
-        title: 'Search Engine Optimization (SEO)',
-        description:
-          "SEO lies in its ability to enhance a website's visibility, driving organic traffic and enabling it to reach a wider audience.",
-        icon: 'tabler:arrows-right-left',
+        title: 'Folder merge recommendations',
+        description: 'Spot related folders that likely belong together and consolidate split import batches with more confidence.',
+        icon: 'tabler:folder-symlink',
       },
       {
-        title: 'Open to new ideas and contributions',
-        description:
-          'Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.',
-        icon: 'tabler:bulb',
+        title: 'HEIC to JPG conversion',
+        description: 'Convert HEIC and HEIF files when you need broader compatibility while keeping cleanup reviewable.',
+        icon: 'tabler:arrows-exchange',
       },
     ]}
   />
 
-  <!-- Content Widget **************** -->
-
   <Content
     isReversed
-    tagline="Inside template"
-    title="AstroWind's Blueprint: Fun Meets Functionality!"
+    tagline="Safety built in"
+    title="Preview cleanup before you commit to real file changes"
     items={[
       {
-        title: 'Built on top of Astro v6',
-        description:
-          'Benefiting from the performance and developer-friendly features of this modern static site generator.',
+        title: 'What-If mode',
+        description: 'Dry-run major changes first so you can see what would happen without moving or deleting files.',
       },
       {
-        title: 'Styled using Tailwind CSS v4',
-        description:
-          'Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.',
+        title: 'Staging-based cleanup',
+        description: 'Stage removals for review before anything is permanently deleted.',
       },
       {
-        title: 'Cross-browser compatibility',
-        description:
-          'Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.',
+        title: 'Activity logs',
+        description: 'Review what ran, what changed, and where to look when you need to verify results.',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Colorful Image',
+      src: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80',
+      alt: 'Photographer reviewing library cleanup results',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building on modern foundations</h3>
-      Gain a competitive advantage by incorporating industry leading practices
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Keep originals safe while you review</h3>
+      SnapAtlas is built for careful cleanup, not blind bulk operations.
     </Fragment>
 
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Content>
-
-  <!-- Content Widget **************** -->
 
   <Content
     isAfterContent
     items={[
       {
-        title: 'High level of customization',
-        description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
+        title: 'Scan first',
+        description: 'Start with a scan, and use a deep scan when you want fuller metadata and duplicate coverage.',
       },
       {
-        title: 'Multiple layout possibilities',
-        description:
-          'Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.',
+        title: 'Review outliers',
+        description: 'When metadata is unclear, keep exceptions separate so they can be checked manually.',
       },
       {
-        title: 'Fully responsive design',
-        description:
-          "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
+        title: 'Run duplicate passes deliberately',
+        description: 'Review exact duplicates before visual duplicates so your highest-confidence cleanup happens first.',
       },
       {
-        title: 'Integration of media',
-        description:
-          'Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.',
+        title: 'Finish with merge or conversion tasks',
+        description: 'Merge related folders and convert HEIC only after your main structure already looks right.',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
-      alt: 'Blueprint Image',
+      src: 'https://images.unsplash.com/photo-1486591978090-58e619d37fe7?auto=format&fit=crop&w=1600&q=80',
+      alt: 'Person reviewing organized photo folders',
     }}
   >
-    <Fragment slot="content">Ensure your online presence truly represents you.</Fragment>
+    <Fragment slot="content">Use one steady workflow instead of juggling scripts, manual moves, and duplicate guessing.</Fragment>
 
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Content>
-
-  <!-- Content Widget **************** -->
 
   <Content
     isReversed
     isAfterContent
     items={[
       {
-        title: 'Enhanced user engagement',
-        description:
-          'Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.',
+        title: 'Local file libraries',
+        description: 'Built around photo and video collections that live on your computer or attached storage.',
       },
       {
-        title: 'Continuous improvement',
-        description:
-          'Ensure your website stays aligned with the latest trends and technologies through regular updates and enhancements.',
+        title: 'Metadata-aware grouping',
+        description: 'Use dates and locations when available instead of relying only on current folder names.',
       },
       {
-        title: 'Time and resource efficiency',
-        description:
-          'Skip the time-consuming process of building a website from scratch and launch your online presence sooner with AstroWind.',
+        title: 'Edited-copy awareness',
+        description: 'Visual duplicate detection helps surface near-matches that simple hash comparison would miss.',
       },
       {
-        title: 'Community support',
-        description: `Join the growing AstroWind community for insights, resources, and assistance, ensuring you're never alone on your web development journey.`,
+        title: 'Incremental cleanup',
+        description: 'Work on a year, month, or folder at a time before scaling up across your whole archive.',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Astronauts Image',
+      src: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1600&q=80',
+      alt: 'Large personal photo archive on a desktop setup',
     }}
   >
-    <Fragment slot="content">Designed to foster growth and success.</Fragment>
+    <Fragment slot="content">Made for large, messy libraries from phones, cameras, exports, and scattered archive folders.</Fragment>
 
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Content>
 
-  <!-- Steps Widget ****************** -->
-
   <Steps
-    title="Get your dream website up and running in no time with AstroWind."
+    title="Recommended SnapAtlas workflow"
     items={[
       {
-        title: 'Step 1: <span class="font-medium">Download</span>',
-        description:
-          "Kickstart with GitHub! Either fork the AstroWind template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you've already set the foundation.",
-        icon: 'tabler:package',
+        title: 'Step 1: <span class="font-medium">Select your photo root folder</span>',
+        description: 'Choose the top-level folder that contains your library so scans and cleanup stay scoped correctly.',
+        icon: 'tabler:folder-open',
       },
       {
-        title: 'Step 2: <span class="font-medium">Add content</span>',
-        description:
-          "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
-        icon: 'tabler:letter-case',
+        title: 'Step 2: <span class="font-medium">Run a scan</span>',
+        description: 'Start with a scan. Use deep scan when you want full metadata extraction and broader duplicate coverage.',
+        icon: 'tabler:scan',
       },
       {
-        title: 'Step 3: <span class="font-medium">Customize styles</span>',
-        description:
-          'Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by AstroWind! Precision in design ensures a seamless user experience.',
-        icon: 'tabler:paint',
+        title: 'Step 3: <span class="font-medium">Enable What-If mode</span>',
+        description: 'Preview major changes before applying them to real files.',
+        icon: 'tabler:shield-search',
       },
       {
-        title: 'Ready!',
+        title: 'Step 4: <span class="font-medium">Organize by date and location</span>',
+        description: 'Build a cleaner structure first, then review outliers that need manual attention.',
+        icon: 'tabler:calendar-up',
+      },
+      {
+        title: 'Step 5: <span class="font-medium">Review duplicates</span>',
+        description: 'Check exact duplicates first, then move to visual duplicates and threshold tuning.',
+        icon: 'tabler:copy-check-filled',
+      },
+      {
+        title: 'Step 6: <span class="font-medium">Merge folders or convert HEIC</span>',
+        description: 'Finish secondary cleanup tasks after your main organization pass looks correct.',
+        icon: 'tabler:arrows-join',
+      },
+      {
+        title: 'Ready',
+        description: 'Verify staged results, then apply changes for real when the preview matches your intent.',
         icon: 'tabler:check',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-      alt: 'Steps image',
+      src: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80',
+      alt: 'Step-by-step library cleanup planning',
     }}
   />
 
-  <!-- Features2 Widget ************** -->
-
   <Features2
-    title="Most used widgets"
-    subtitle="Provides frequently used components for building websites using Tailwind CSS v4"
-    tagline="Components"
+    title="Built for real photo cleanup tasks"
+    subtitle="SnapAtlas covers both first-pass organization and ongoing maintenance."
+    tagline="Capabilities"
     items={[
       {
-        title: 'Headers',
-        description: "Ever tried driving without GPS? Boom! That's why websites need headers for direction.",
-        icon: 'flat-color-icons:template',
+        title: 'Background indexing',
+        description: 'Keep counts and folder state current while working through a large archive.',
+        icon: 'tabler:refresh',
       },
       {
-        title: 'Heros',
-        description:
-          "Picture a superhero landing – epic, right? That's the job of a Hero section, making grand entrances!",
-        icon: 'flat-color-icons:gallery',
+        title: 'Exact duplicate review',
+        description: 'Find byte-for-byte copies quickly before moving to harder visual comparisons.',
+        icon: 'tabler:copy-check',
       },
       {
-        title: 'Features',
-        description:
-          'Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!',
-        icon: 'flat-color-icons:approval',
+        title: 'Visual duplicate review',
+        description: 'Catch same-photo variants with different encodings, crops, or edits.',
+        icon: 'tabler:photo-search',
       },
       {
-        title: 'Content',
-        description:
-          "Dive into the meat and potatoes of a site; without it, you'd just be window shopping. Content is king.",
-        icon: 'flat-color-icons:document',
+        title: 'Outlier handling',
+        description: 'Separate unclear items so low-confidence files do not pollute automated organization.',
+        icon: 'tabler:alert-circle',
       },
       {
-        title: 'Call-to-Action',
-        description:
-          'That enthusiastic friend who\'s always urging, "Do it! Do it!"? Yeah, that\'s this button nudging you towards adventure.',
-        icon: 'flat-color-icons:advertising',
+        title: 'Date-based folders',
+        description: 'Create more consistent structures such as year and day-based groupings.',
+        icon: 'tabler:calendar-stats',
       },
       {
-        title: 'Pricing',
-        description: 'Behold the dessert menu of the website world. Tempting choices await, can you resist?',
-        icon: 'flat-color-icons:currency-exchange',
+        title: 'Location grouping',
+        description: 'Use GPS metadata where available to make folders easier to understand later.',
+        icon: 'tabler:map-pin',
       },
       {
-        title: 'Testimonial',
-        description: 'Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.',
-        icon: 'flat-color-icons:voice-presentation',
+        title: 'Safe staging flow',
+        description: 'Review cleanup candidates before anything is permanently removed.',
+        icon: 'tabler:shield-check',
       },
       {
-        title: 'Contact',
-        description:
-          'Like a digital mailbox, but faster! Drop a line, ask a question, or send a virtual high-five. Ding! Message in.',
-        icon: 'flat-color-icons:business-contact',
+        title: 'Local-first privacy',
+        description: 'No cloud upload is required for normal desktop cleanup workflows.',
+        icon: 'tabler:lock',
       },
       {
-        title: 'Footers',
-        description: "The footer's like the credits of a movie but sprinkled with easter eggs. Time to hunt!",
-        icon: 'flat-color-icons:database',
+        title: 'HEIC compatibility',
+        description: 'Convert files when you need easier sharing with JPG-only systems.',
+        icon: 'tabler:transform',
       },
     ]}
   >
@@ -311,88 +281,69 @@ const metadata = {
     </Fragment>
   </Features2>
 
-  <!-- HighlightedPosts Widget ******* -->
-
   <BlogLatestPosts
-    title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
-                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro v6 + Tailwind CSS v4.
-                        Astro is a very interesting technology. Thanks.
-                `}
+    title="Guides for first-time cleanup and ongoing maintenance"
+    information={`Read walkthroughs for scanning, organizing by date and location, duplicate cleanup,
+      related-folder merges, HEIC conversion, and SnapAtlas safety practices.`}
   />
-
-  <!-- FAQs Widget ******************* -->
 
   <FAQs
     title="Frequently Asked Questions"
-    subtitle="Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey."
+    subtitle="Use these quick answers before starting a major cleanup run."
     tagline="FAQs"
     classes={{ container: 'max-w-6xl' }}
     items={[
       {
-        title: 'Why AstroWind?',
-        description:
-          "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
+        title: 'Is SnapAtlas cloud-based?',
+        description: 'No. It is a desktop workflow for local files.',
       },
       {
-        title: 'What do I need to start?',
-        description:
-          'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
+        title: 'Will it delete files immediately?',
+        description: 'By default, cleanup is staged for review first.',
       },
       {
-        title: 'How to install the Astro + Tailwind CSS template?',
-        description:
-          "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
+        title: 'Do I need ExifTool?',
+        description: 'Only for writing or editing metadata. Reading metadata is built in.',
       },
       {
-        title: "What's something that you don't understand?",
-        description:
-          "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
+        title: 'Can it detect edited copies?',
+        description: 'Yes. Visual duplicate detection helps surface same-photo variants.',
       },
       {
-        title: 'What is something that you would like to try again?',
-        description:
-          "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
+        title: 'What if duplicate results seem off?',
+        description: 'Adjust the visual similarity threshold and review exact and visual duplicates separately.',
       },
       {
-        title: 'If you could only ask one question to each person you meet, what would that question be?',
-        description:
-          "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
+        title: 'What if operations feel slow?',
+        description: 'Process smaller scopes first, run one heavy operation at a time, and let initial indexing finish.',
       },
     ]}
   />
-
-  <!-- Stats Widget ****************** -->
 
   <Stats
     stats={[
-      { title: 'Downloads', amount: '132K' },
-      { title: 'Stars', amount: '24.8K' },
-      { title: 'Forks', amount: '10.3K' },
-      { title: 'Users', amount: '48.4K' },
+      { title: 'Core workflows', amount: '6' },
+      { title: 'Duplicate modes', amount: '2' },
+      { title: 'Cloud uploads required', amount: '0' },
+      { title: 'Safety layers', amount: '3' },
     ]}
   />
-
-  <!-- CallToAction Widget *********** -->
 
   <CallToAction
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/arthelokyo/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
+        text: 'Read guides',
+        href: '/blog',
       },
     ]}
   >
     <Fragment slot="title">
-      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
+      Start with <span class="sm:whitespace-nowrap">safe cleanup</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
-      waste more time! :P
+      Scan first, preview changes, and work through your library one deliberate operation at a time.
     </Fragment>
   </CallToAction>
 </Layout>
