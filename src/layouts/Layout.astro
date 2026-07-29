@@ -1,172 +1,50 @@
 ---
-interface Props {
-  title: string;
-  description?: string;
+import '~/assets/styles/tailwind.css';
+
+import { I18N } from 'astrowind:config';
+
+import CommonMeta from '~/components/common/CommonMeta.astro';
+import Favicons from '~/components/Favicons.astro';
+import CustomStyles from '~/components/CustomStyles.astro';
+import ApplyColorMode from '~/components/common/ApplyColorMode.astro';
+import Metadata from '~/components/common/Metadata.astro';
+import SiteVerification from '~/components/common/SiteVerification.astro';
+import Analytics from '~/components/common/Analytics.astro';
+import BasicScripts from '~/components/common/BasicScripts.astro';
+
+// Comment the line below to disable View Transitions
+import { ClientRouter } from 'astro:transitions';
+
+import type { MetaData as MetaDataType } from '~/types';
+
+export interface Props {
+  metadata?: MetaDataType;
 }
 
-const { title, description = "Organize thousands of photos by date, find duplicates, and manage locations with SnapAtlas." } = Astro.props;
-const base = import.meta.env.BASE_URL;
-const currentPath = Astro.url.pathname;
-const navLinks = [
-	{ label: 'Home', href: base },
-	{ label: 'Features', href: `${base}features` },
-	{ label: 'Use Cases', href: `${base}use-cases` },
-	{ label: 'Support', href: `${base}support` }
-];
-
-const isActive = (href: string) => {
-	const normalizedHref = href.endsWith('/') ? href : `${href}/`;
-	const normalizedPath = currentPath.endsWith('/') ? currentPath : `${currentPath}/`;
-	return normalizedPath === normalizedHref;
-};
+const { metadata = {} } = Astro.props;
+const { language, textDirection } = I18N;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={language} dir={textDirection} class="2xl:text-[20px]">
   <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="description" content={description} />
-	<meta name="theme-color" content="#1d4ed8" />
-	<meta name="generator" content={Astro.generator} />
+    <CommonMeta />
+    <Favicons />
+    <CustomStyles />
+    <ApplyColorMode />
+    <Metadata {...metadata} />
+    <SiteVerification />
+    <Analytics />
 
-	<!-- Open Graph -->
-	<meta property="og:title" content={title} />
-	<meta property="og:description" content={description} />
-	<meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://images.unsplash.com" />
 
-	<!-- Favicon -->
-	<link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
-
-	<title>{title}</title>
-	<link href={`${base}styles/global.css`} rel="stylesheet" />
+    <!-- Comment the line below to disable View Transitions -->
+    <ClientRouter fallback="swap" />
   </head>
-  <body class="min-h-screen flex flex-col">
-	<header class="sticky top-0 z-50 backdrop-blur-md border-b border-slate-200/70 surface-panel">
-	  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="flex justify-between items-center h-16 fade-in-up">
-		  <div class="flex items-center">
-			<a href={base} class="flex items-center space-x-3">
-			  <span class="h-9 w-9 rounded-xl bg-blue-700 text-white grid place-items-center shadow-md shadow-blue-900/20">
-				<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-				</svg>
-			  </span>
-			  <span class="leading-tight">
-				<span class="block text-lg font-bold text-slate-900">SnapAtlas</span>
-				<span class="block text-[11px] uppercase tracking-[0.14em] text-slate-500">Photo Organization</span>
-			  </span>
-			</a>
-		  </div>
 
-		  <div class="hidden md:flex items-center gap-1">
-			{navLinks.map((link) => (
-			  <a
-				href={link.href}
-				class={`nav-link ${isActive(link.href) ? 'nav-link-active' : ''}`}
-				aria-current={isActive(link.href) ? 'page' : undefined}
-			  >
-				{link.label}
-			  </a>
-			))}
-			<a href={`${base}download`} class="btn-primary px-4 py-2 rounded-lg text-sm ml-2">Download</a>
-		  </div>
+  <body class="antialiased text-default bg-page tracking-tight">
+    <slot />
 
-		  <!-- Mobile menu button -->
-		  <div class="md:hidden">
-			<button type="button" aria-label="Toggle navigation menu" class="mobile-menu-button text-slate-700 hover:text-blue-700 p-2 rounded-lg hover:bg-blue-100/70 transition-colors">
-			  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-			  </svg>
-			</button>
-		  </div>
-		</div>
-
-		<!-- Mobile menu -->
-		<div class="mobile-menu hidden md:hidden pb-4">
-		  <div class="surface-panel rounded-2xl p-3 space-y-1">
-			{navLinks.map((link) => (
-			  <a
-				href={link.href}
-				class={`block nav-link ${isActive(link.href) ? 'nav-link-active' : ''}`}
-				aria-current={isActive(link.href) ? 'page' : undefined}
-			  >
-				{link.label}
-			  </a>
-			))}
-			<a href={`${base}download`} class="block px-4 py-2 bg-blue-700 text-white rounded-lg text-center font-semibold hover:bg-blue-800 transition-colors">Download</a>
-		  </div>
-		</div>
-	  </nav>
-	</header>
-
-	<main class="flex-grow">
-	  <slot />
-	</main>
-
-	<footer class="mt-auto border-t border-slate-200/70 bg-slate-950 text-slate-300">
-	  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-		<div class="grid grid-cols-1 md:grid-cols-4 gap-10">
-		  <div>
-			<h3 class="text-white font-bold text-lg mb-4">SnapAtlas</h3>
-			<p class="text-sm leading-relaxed text-slate-400">Metadata-first photo organization for real-world archives, from family libraries to DataHoarder-scale collections.</p>
-		  </div>
-
-		  <div>
-			<h4 class="text-white font-semibold mb-4">Product</h4>
-			<ul class="space-y-2 text-sm">
-			  <li><a href={`${base}features`} class="hover:text-white">Features</a></li>
-			  <li><a href={`${base}use-cases`} class="hover:text-white">Use Cases</a></li>
-			  <li><a href={`${base}download`} class="hover:text-white">Download</a></li>
-			</ul>
-		  </div>
-
-		  <div>
-			<h4 class="text-white font-semibold mb-4">Support</h4>
-			<ul class="space-y-2 text-sm">
-			  <li><a href={`${base}support`} class="hover:text-white">Documentation</a></li>
-			  <li><a href="https://github.com/XopherR/PhotoOrganizer" class="hover:text-white" target="_blank">GitHub</a></li>
-			  <li><a href="mailto:support@northshoreapps.com" class="hover:text-white">Contact</a></li>
-			</ul>
-		  </div>
-
-		  <div>
-			<h4 class="text-white font-semibold mb-4">Legal</h4>
-			<ul class="space-y-2 text-sm">
-			  <li><a href={`${base}privacy`} class="hover:text-white">Privacy Policy</a></li>
-			  <li><a href={`${base}terms`} class="hover:text-white">Terms of Service</a></li>
-			</ul>
-		  </div>
-		</div>
-
-		<div class="soft-divider mt-10 pt-8 text-sm text-center text-slate-500">
-		  <p>&copy; {new Date().getFullYear()} North Shore Apps. All rights reserved.</p>
-		</div>
-	  </div>
-	</footer>
-
-	<script>
-	  // Mobile menu toggle
-	  const menuButton = document.querySelector('.mobile-menu-button');
-	  const mobileMenu = document.querySelector('.mobile-menu');
-
-	  menuButton?.addEventListener('click', () => {
-		mobileMenu?.classList.toggle('hidden');
-	  });
-
-	  document.addEventListener('click', (event) => {
-		const target = event.target;
-		if (!(target instanceof Node)) return;
-		if (!mobileMenu || !menuButton) return;
-		if (mobileMenu.classList.contains('hidden')) return;
-
-		const clickInsideMenu = mobileMenu.contains(target);
-		const clickMenuButton = menuButton.contains(target);
-
-		if (!clickInsideMenu && !clickMenuButton) {
-		  mobileMenu.classList.add('hidden');
-		}
-	  });
-	</script>
+    <BasicScripts />
   </body>
 </html>
